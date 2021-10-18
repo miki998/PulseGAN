@@ -1,5 +1,5 @@
 ## PulseGAN
-
+PulseGAN: Learning to generate realistic pulse waveforms in remote photoplethysmography
 
 
 
