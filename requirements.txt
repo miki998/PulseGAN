@@ -1,0 +1,9 @@
+pandas
+tqdm
+mediapipe
+torch
+torchvision
+opencv
+scikit-learn
+scipy
+jupyter
