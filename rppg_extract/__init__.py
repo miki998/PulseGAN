@@ -9,7 +9,6 @@
 """
 
 from .CHROM import *
-from .pyramids import *
 from .SSch import *
 from .SSR import *
 from .POS import *

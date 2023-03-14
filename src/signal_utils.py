@@ -1,13 +1,3 @@
-"""
-
-@author: Chun Hei Michael Chan
-@copyright: Copyright Logitech
-@credits: [Chun Hei Michael Chan]
-@maintainer: Chun Hei Michael Chan
-@email: cchan5@logitech.com
-
-"""
-
 # Pre-process & Post-process
 import numpy as np
 import scipy.fftpack as fftpack

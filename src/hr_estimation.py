@@ -1,13 +1,3 @@
-"""
-
-@author: Chun Hei Michael Chan
-@copyright: Copyright Logitech
-@credits: [Chun Hei Michael Chan]
-@maintainer: Chun Hei Michael Chan
-@email: cchan5@logitech.com
-
-"""
-
 import numpy as np
 
 # signal libs

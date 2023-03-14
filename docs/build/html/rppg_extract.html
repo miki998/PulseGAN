@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>rppg_extract package &mdash; PulseGan 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="src package" href="src.html" />
+    <link rel="prev" title="Model Implementation PULSEGAN" href="notebooks/train.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PulseGan
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/train.html">Model Implementation PULSEGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/train.html#DataLoader">DataLoader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/train.html#Model-Training">Model Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/train.html#Examples-of-usage-and-results">Examples of usage and results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/train.html#Compute-correlation-again-for-Physnet-with-correcting">Compute correlation again for Physnet with correcting</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">rppg_extract package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rppg_extract.CHROM">rppg_extract.CHROM module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rppg_extract.CHROM.CHROM"><code class="docutils literal notranslate"><span class="pre">CHROM()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rppg_extract.POS">rppg_extract.POS module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rppg_extract.POS.POS"><code class="docutils literal notranslate"><span class="pre">POS()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rppg_extract.SSR">rppg_extract.SSR module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rppg_extract.SSR.SSR"><code class="docutils literal notranslate"><span class="pre">SSR()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rppg_extract.SSR.build_correlation_matrix"><code class="docutils literal notranslate"><span class="pre">build_correlation_matrix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rppg_extract.SSR.build_p"><code class="docutils literal notranslate"><span class="pre">build_p()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rppg_extract.SSR.eigs"><code class="docutils literal notranslate"><span class="pre">eigs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rppg_extract.SSch">rppg_extract.SSch module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rppg_extract.SSch.SCch"><code class="docutils literal notranslate"><span class="pre">SCch()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rppg_extract">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="src.html">src package</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PulseGan</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">rppg_extract package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/rppg_extract.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="rppg-extract-package">
+<h1>rppg_extract package<a class="headerlink" href="#rppg-extract-package" title="Permalink to this heading"></a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</div>
+<div class="section" id="module-rppg_extract.CHROM">
+<span id="rppg-extract-chrom-module"></span><h2>rppg_extract.CHROM module<a class="headerlink" href="#module-rppg_extract.CHROM" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="rppg_extract.CHROM.CHROM">
+<span class="sig-prename descclassname"><span class="pre">rppg_extract.CHROM.</span></span><span class="sig-name descname"><span class="pre">CHROM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rppg_extract.CHROM.CHROM" title="Permalink to this definition"></a></dt>
+<dd><div class="section" id="information">
+<h3>Information:<a class="headerlink" href="#information" title="Permalink to this heading"></a></h3>
+<p>From RGB spatial-average obtain a one time signal POS</p>
+<dl class="field-list simple">
+<dt class="field-odd">param X      ::[2darray&lt;float&gt;]</dt>
+<dd class="field-odd"><p>RGB spatial-averaged array</p>
+</dd>
+<dt class="field-even">param channel::[int]</dt>
+<dd class="field-even"><p></p></dd>
+<dt class="field-odd">returns</dt>
+<dd class="field-odd"><p>1d signal</p>
+</dd>
+<dt class="field-even">rtype</dt>
+<dd class="field-even"><p>C::[array&lt;float&gt;]</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-rppg_extract.POS">
+<span id="rppg-extract-pos-module"></span><h2>rppg_extract.POS module<a class="headerlink" href="#module-rppg_extract.POS" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="rppg_extract.POS.POS">
+<span class="sig-prename descclassname"><span class="pre">rppg_extract.POS.</span></span><span class="sig-name descname"><span class="pre">POS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">windows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.6</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rppg_extract.POS.POS" title="Permalink to this definition"></a></dt>
+<dd><div class="section" id="id1">
+<h3>Information:<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<p>From RGB spatial-average obtain a one time signal POS</p>
+<dl class="field-list simple">
+<dt class="field-odd">param X      ::[2darray&lt;float&gt;]</dt>
+<dd class="field-odd"><p>RGB spatial-averaged array</p>
+</dd>
+<dt class="field-even">param fps    ::[int]</dt>
+<dd class="field-even"><p></p></dd>
+<dt class="field-odd">param windows::[float]</dt>
+<dd class="field-odd"><p>averaging window time</p>
+</dd>
+<dt class="field-even">returns</dt>
+<dd class="field-even"><p>1d signal</p>
+</dd>
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p>h::[array&lt;float&gt;]</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-rppg_extract.SSR">
+<span id="rppg-extract-ssr-module"></span><h2>rppg_extract.SSR module<a class="headerlink" href="#module-rppg_extract.SSR" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="rppg_extract.SSR.SSR">
+<span class="sig-prename descclassname"><span class="pre">rppg_extract.SSR.</span></span><span class="sig-name descname"><span class="pre">SSR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">windows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.6</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rppg_extract.SSR.SSR" title="Permalink to this definition"></a></dt>
+<dd><div class="section" id="id2">
+<h3>Information:<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<p>From roi obtain a one time signal POS</p>
+</div>
+<div class="section" id="parameters">
+<h3>Parameters:<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>X      ::[2darray&lt;float&gt;]</dt><dd><p>RGB spatial-averaged array</p>
+</dd>
+</dl>
+<p>fps    ::[int]
+windows::[float]</p>
+<blockquote>
+<div><p>averaging window time</p>
+</div></blockquote>
+</div>
+<div class="section" id="returns">
+<h3>Returns:<a class="headerlink" href="#returns" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>bvp::[array&lt;float&gt;]</dt><dd><p>1d signal</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rppg_extract.SSR.build_correlation_matrix">
+<span class="sig-prename descclassname"><span class="pre">rppg_extract.SSR.</span></span><span class="sig-name descname"><span class="pre">build_correlation_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">V</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rppg_extract.SSR.build_correlation_matrix" title="Permalink to this definition"></a></dt>
+<dd><div class="section" id="id3">
+<h3>Information:<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<p>Build correlation matrix</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rppg_extract.SSR.build_p">
+<span class="sig-prename descclassname"><span class="pre">rppg_extract.SSR.</span></span><span class="sig-name descname"><span class="pre">build_p</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">τ</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Λ</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rppg_extract.SSR.build_p" title="Permalink to this definition"></a></dt>
+<dd><div class="section" id="id4">
+<h3>Information:<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<p>builds P</p>
+<dl class="field-list simple">
+<dt class="field-odd">param k</dt>
+<dd class="field-odd"><p>The frame index</p>
+</dd>
+<dt class="field-even">type k</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param l</dt>
+<dd class="field-odd"><p>The temporal stride to use</p>
+</dd>
+<dt class="field-even">type l</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param U</dt>
+<dd class="field-odd"><p>The eigenvectors of the c matrix (for all frames up to counter).</p>
+</dd>
+<dt class="field-even">type U</dt>
+<dd class="field-even"><p>numpy.ndarray</p>
+</dd>
+<dt class="field-odd">param Λ</dt>
+<dd class="field-odd"><p>The eigenvalues of the c matrix (for all frames up to counter).</p>
+</dd>
+<dt class="field-even">type Λ</dt>
+<dd class="field-even"><p>numpy.ndarray</p>
+</dd>
+<dt class="field-odd">returns</dt>
+<dd class="field-odd"><p><strong>p</strong> – The p signal to add to the pulse.</p>
+</dd>
+<dt class="field-even">rtype</dt>
+<dd class="field-even"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rppg_extract.SSR.eigs">
+<span class="sig-prename descclassname"><span class="pre">rppg_extract.SSR.</span></span><span class="sig-name descname"><span class="pre">eigs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">C</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rppg_extract.SSR.eigs" title="Permalink to this definition"></a></dt>
+<dd><div class="section" id="id5">
+<h3>Information:<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<p>get eigenvalues and eigenvectors, sort them.</p>
+</div>
+<div class="section" id="id6">
+<h3>Parameters:<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>C: numpy.ndarray</dt><dd><p>The RGB values of skin-colored pixels.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id7">
+<h3>Returns:<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>Λ: numpy.ndarray</dt><dd><p>The eigenvalues of the correlation matrix</p>
+</dd>
+<dt>U: numpy.ndarray</dt><dd><p>The (sorted) eigenvectors of the correlation matrix</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-rppg_extract.SSch">
+<span id="rppg-extract-ssch-module"></span><h2>rppg_extract.SSch module<a class="headerlink" href="#module-rppg_extract.SSch" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="rppg_extract.SSch.SCch">
+<span class="sig-prename descclassname"><span class="pre">rppg_extract.SSch.</span></span><span class="sig-name descname"><span class="pre">SCch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rppg_extract.SSch.SCch" title="Permalink to this definition"></a></dt>
+<dd><div class="section" id="id8">
+<h3>Information:<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<p>From RGB spatial-average obtain a one time signal POS</p>
+<dl class="field-list simple">
+<dt class="field-odd">param X      ::[2darray&lt;float&gt;]</dt>
+<dd class="field-odd"><p>RGB spatial-averaged array</p>
+</dd>
+<dt class="field-even">param channel::[int]</dt>
+<dd class="field-even"><p></p></dd>
+<dt class="field-odd">returns</dt>
+<dd class="field-odd"><p>1d signal</p>
+</dd>
+<dt class="field-even">rtype</dt>
+<dd class="field-even"><p>monochannel::[array&lt;float&gt;]</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-rppg_extract">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-rppg_extract" title="Permalink to this heading"></a></h2>
+<p>&#64;author: Chun Hei Michael Chan
+&#64;copyright: Copyright Logitech
+&#64;credits: [Chun Hei Michael Chan]
+&#64;maintainer: Chun Hei Michael Chan
+&#64;email: <a class="reference external" href="mailto:cchan5&#37;&#52;&#48;logitech&#46;com">cchan5<span>&#64;</span>logitech<span>&#46;</span>com</a></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="notebooks/train.html" class="btn btn-neutral float-left" title="Model Implementation PULSEGAN" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="src.html" class="btn btn-neutral float-right" title="src package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Michael Chan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,27 +1,25 @@
-"""
-
-@author: Chun Hei Michael Chan
-@copyright: Copyright Logitech
-@credits: [Chun Hei Michael Chan]
-@maintainer: Chun Hei Michael Chan
-@email: cchan5@logitech.com
-
-"""
-
 import numpy as np
 
 def POS(X,fps,windows=1.6):
     """
-    desc: from RGB spatial-average obtain a one time signal POS
-    
-    args:
-        - X::[array<array<float> > ]
-            RGB spatial-averaged array
-    ret: 
-        - h::[array<float>] 
-            1d signal
-    
+    Information:
+    ------------
+    From RGB spatial-average obtain a one time signal POS
+
+    Parameters
+    ----------
+    X      ::[2darray<float>]
+        RGB spatial-averaged array
+    fps    ::[int]
+    windows::[float]
+        averaging window time
+
+    Returns
+    -------
+    h::[array<float>] 
+        1d signal
     """
+
     P = np.array([[0,1,-1],[-2,1,1]])
     wlen = int(windows * fps)
 

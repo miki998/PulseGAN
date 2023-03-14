@@ -11,6 +11,11 @@ copyright = '2023, Michael Chan'
 author = 'Michael Chan'
 release = '0.1'
 
+
+import os 
+import sys
+sys.path.insert(0, os.path.abspath("../../"))
+
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
@@ -18,7 +23,9 @@ extensions = [
     "myst_parser",
     "sphinx.ext.duration",
     "sphinx.ext.autosectionlabel",
-    "nbsphinx"
+    "nbsphinx",
+    "sphinx.ext.autodoc",
+    "sphinx.ext.napoleon"
 ]
 
 templates_path = ['_templates']

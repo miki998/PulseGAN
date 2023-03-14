@@ -1,18 +1,11 @@
-"""
-
-@author: Chun Hei Michael Chan
-@copyright: Copyright Logitech
-@credits: [Chun Hei Michael Chan]
-@maintainer: Chun Hei Michael Chan
-@email: cchan5@logitech.com
-
-"""
-
 import numpy as np
 
 def build_p(τ, k, l, U, Λ):
     """
+    Information:
+    ------------
     builds P
+
     Parameters
     ----------
     k: int
@@ -23,11 +16,13 @@ def build_p(τ, k, l, U, Λ):
         The eigenvectors of the c matrix (for all frames up to counter).
     Λ: numpy.ndarray
         The eigenvalues of the c matrix (for all frames up to counter).
+
     Returns
     -------
     p: numpy.ndarray
         The p signal to add to the pulse.
     """
+
     # SR'
     SR = np.zeros((3, l), 'float64')  # dim: 3xl
     z = 0
@@ -63,6 +58,11 @@ def build_p(τ, k, l, U, Λ):
     return p  # dim: l
 
 def build_correlation_matrix(V):
+    """
+    Information:
+    ------------
+    Build correlation matrix
+    """    
     # V dim: (W×H)x3
     #V = np.unique(V, axis=0)
     V_T = V.T  # dim: 3x(W×H)
@@ -75,12 +75,16 @@ def build_correlation_matrix(V):
 
 def eigs(C):
     """
+    Information:
+    ------------
     get eigenvalues and eigenvectors, sort them.
-    Parameters
+
+    Parameters:
     ----------
     C: numpy.ndarray
         The RGB values of skin-colored pixels.
-    Returns
+
+    Returns:
     -------
     Λ: numpy.ndarray
         The eigenvalues of the correlation matrix
@@ -98,15 +102,22 @@ def eigs(C):
     
 def SSR(X,fps,windows=1.6):
     """
-    desc: from roi obtain a one time signal POS
+    Information:
+    ------------
+    From roi obtain a one time signal POS
     
-    args:
-        - roi::[array<array<array<float> > >]
-            stream of images
-    ret: 
-        - P::[array<float>] 
-            1d signal
-    
+    Parameters:
+    ----------
+    X      ::[2darray<float>]
+        RGB spatial-averaged array
+    fps    ::[int]
+    windows::[float]
+        averaging window time
+
+    Returns:
+    -------
+    bvp::[array<float>] 
+        1d signal
     """
     
     K = len(X)
