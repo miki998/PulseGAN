@@ -3,7 +3,12 @@ tqdm
 mediapipe
 torch
 torchvision
-opencv
+opencv-python
 scikit-learn
 scipy
 jupyter
+sphinx
+myst-parser
+rst-to-myst[sphinx]
+sphinx-autobuild
+nbsphinx==0.8.12

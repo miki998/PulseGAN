@@ -53,30 +53,6 @@ def haarcascade(img, faceCascade):
 
 	return None
 
-# # ROI selections
-# def ROI_choice(img,detector,predictor):
-# 	"""
-# 	desc: From full image obtain region of interest namely the face
-	
-# 	args:
-# 		- img::[array<array<int>>]
-# 		- detector::[special class]
-# 			defined globals
-# 		- predictor::[special class]
-# 			defined globals
-# 	ret:
-# 		- shape::[array<2d>]
-# 			contour (limited polygone) of face (e.g 68 landmarks position)
-	
-# 	"""
-# 	gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-# 	rects = detector(gray, 1)
-
-# 	rect = rects[0]
-# 	shape_dlib = predictor(gray, rect)
-# 	shape = face_utils.shape_to_np(shape_dlib)
-# 	return shape
-
 def ROI_choice2(img, faceMesh):
 	landmarks = [] 
 

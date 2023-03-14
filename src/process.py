@@ -15,6 +15,13 @@ from scipy import signal, sparse
 from scipy.signal import butter, lfilter, filtfilt, freqz,welch
 
 
+def normalize(array):
+    m = np.mean(array)
+    s = np.std(array)
+    if s == 0:
+        return array - m
+    else:
+        return (array - m)/s
 
 # https://github.com/phuselab/pyVHR/blob/758364e92dab384fe49be975eba380d157da21a7/pyVHR
 def BPfilter(x, minHz, maxHz, fs, order=6):
